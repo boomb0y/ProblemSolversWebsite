@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Problem Solvers</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0f1a; color: #e0e0f0; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    nav .logo { font-size: 1.4rem; font-weight: 700; background: linear-gradient(135deg, #7c6fff, #ff6fb4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: #aaa; text-decoration: none; font-size: 0.95rem; }
+    nav a:hover { color: #fff; }
+    .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 2rem; }
+    .badge { display: inline-block; background: rgba(124,111,255,0.15); border: 1px solid rgba(124,111,255,0.4); color: #a89fff; font-size: 0.8rem; padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.2rem; background: linear-gradient(135deg, #fff 30%, #9b8fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { font-size: 1.15rem; color: #888; max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn { padding: 0.8rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; }
+    .btn-primary { background: linear-gradient(135deg, #7c6fff, #ff6fb4); color: #fff; border: none; }
+    .btn-secondary { background: transparent; color: #ccc; border: 1px solid rgba(255,255,255,0.2); }
+    .cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; padding: 3rem 2rem 5rem; }
+    .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; width: 260px; text-align: left; }
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.88rem; color: #777; line-height: 1.6; }
+    footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; color: #444; border-top: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="logo">Problem Solvers</span>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <section class="hero">
+    <div class="badge">Now Live</div>
+    <h1>We Build Things<br>That Actually Work</h1>
+    <p class="subtitle">A team passionate about tackling hard problems with clean solutions. From idea to deployment, we make it happen.</p>
+    <div class="cta-group">
+      <a href="#" class="btn btn-primary">Get Started</a>
+      <a href="#" class="btn btn-secondary">Learn More</a>
+    </div>
+  </section>
+  <section class="cards">
+    <div class="card">
+      <div class="card-icon">&#9889;</div>
+      <h3>Fast and Reliable</h3>
+      <p>We prioritize performance and uptime so your users always get a smooth experience.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#127757;</div>
+      <h3>Built to Scale</h3>
+      <p>Whether you have 10 users or 10 million, our solutions grow with you.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#128161;</div>
+      <h3>Creative Solutions</h3>
+      <p>We approach every challenge with fresh eyes and a commitment to doing it right.</p>
+    </div>
+  </section>
+  <footer>&copy; 2026 Problem Solvers &mdash; problemsolvers.tech</footer>
+</body>
+</html>
