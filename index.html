@@ -592,6 +592,65 @@ video {
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
+
+/* Loading overlay styles */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8fafc;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.loading-spinner::before,
+.loading-spinner::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  animation: loadingPulse 1.2s ease-in-out infinite;
+}
+
+.loading-spinner::before {
+  background: #ff6b35;
+  top: 0;
+  left: 0;
+}
+
+.loading-spinner::after {
+  background: #4dabf7;
+  bottom: 0;
+  right: 0;
+  animation-delay: 0.3s;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.8); opacity: 0.5; }
+}
+
 .visible {
   visibility: visible;
 }
@@ -1895,18 +1954,19 @@ video {
       height: 0 !important;
     }
   </style></head>
-<body class="bg-brand-light text-slate-800 antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white" vid="10">
+<body class="bg-brand-light text-slate-800 antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white loading" vid="10">
 
-    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+
     <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-slate-200" id="navbar" vid="11">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between" vid="12">
             
-            <a href="#" class="flex items-center gap-2 group" vid="13">
-                <div class="relative w-8 h-8 flex items-center justify-center" vid="14">
-                    <div class="absolute w-5 h-5 bg-brand-orange rounded-sm transform transition-transform group-hover:rotate-12" vid="15"></div>
-                    <div class="absolute w-5 h-5 bg-brand-blue rounded-sm translate-x-3 translate-y-3 transform transition-transform group-hover:-rotate-12 mix-blend-multiply opacity-90" vid="16"></div>
-                </div>
-                <span class="font-bold text-xl tracking-tight text-brand-dark ml-3" vid="17">Problem Solvers</span>
+            <a href="#" class="flex items-center group" vid="13">
+                <img src="Adobe Express - file.png" alt="Problem Solvers Logo" class="h-12 w-auto transition-transform group-hover:scale-105" vid="14">
             </a>
 
             
@@ -2273,20 +2333,8 @@ video {
     
     <section class="py-24 bg-brand-dark relative overflow-hidden border-t border-white/10" vid="218">
         <div class="max-w-7xl mx-auto px-6 relative z-10" vid="219">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center" vid="220">
-                <div class="puzzle-piece slide-from-bottom delay-100" vid="221">
-                    <div class="text-5xl font-extrabold text-brand-orange mb-2" vid="222">250+</div>
-                    <div class="text-slate-400 font-medium" vid="223">Projects Delivered</div>
-                </div>
-                <div class="puzzle-piece slide-from-bottom delay-200" vid="224">
-                    <div class="text-5xl font-extrabold text-brand-blue mb-2" vid="225">15</div>
-                    <div class="text-slate-400 font-medium" vid="226">Expert Devs</div>
-                </div>
-                <div class="puzzle-piece slide-from-bottom delay-300" vid="227">
-                    <div class="text-5xl font-extrabold text-brand-rust mb-2" vid="228">99%</div>
-                    <div class="text-slate-400 font-medium" vid="229">Client Retention</div>
-                </div>
-                <div class="puzzle-piece slide-from-bottom delay-400" vid="230">
+            <div class="flex justify-center text-center" vid="220">
+                <div class="puzzle-piece slide-from-bottom delay-100" vid="230">
                     <div class="text-5xl font-extrabold text-white mb-2" vid="231">24/7</div>
                     <div class="text-slate-400 font-medium" vid="232">System Monitoring</div>
                 </div>
@@ -2316,7 +2364,7 @@ video {
                                 </div>
                                 <div vid="246">
                                     <p class="text-sm text-slate-400 font-medium mb-1" vid="247">Email us</p>
-                                    <a href="mailto:hello@problemsolvers.dev" class="text-lg font-semibold hover:text-brand-orange transition-colors" vid="248">hello@problemsolvers.dev</a>
+                                    <a href="mailto:bentechnyc@gmail.com" class="text-lg font-semibold hover:text-brand-orange transition-colors" vid="248">bentechnyc@gmail.com</a>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4" vid="249">
@@ -2325,16 +2373,7 @@ video {
                                 </div>
                                 <div vid="252">
                                     <p class="text-sm text-slate-400 font-medium mb-1" vid="253">Call us</p>
-                                    <a href="tel:+15551234567" class="text-lg font-semibold hover:text-brand-blue transition-colors" vid="254">+1 (555) 123-4567</a>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4" vid="255">
-                                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0" vid="256">
-                                    <i class="ph-bold ph-map-pin text-xl text-brand-rust" vid="257"></i>
-                                </div>
-                                <div vid="258">
-                                    <p class="text-sm text-slate-400 font-medium mb-1" vid="259">Visit us</p>
-                                    <p class="text-lg font-semibold text-slate-200" vid="260">100 Innovation Way<br vid="261">Tech District, NY 10012</p>
+                                    <a href="tel:+13474806838" class="text-lg font-semibold hover:text-brand-blue transition-colors" vid="254">347-480-6838</a>
                                 </div>
                             </div>
                         </div>
@@ -2343,26 +2382,26 @@ video {
 
                 
                 <div class="w-full lg:w-7/12 p-12 lg:p-16 puzzle-piece slide-from-right delay-200" vid="262">
-                    <form class="space-y-6" vid="263">
+                    <form class="space-y-6" action="mailto:bentechnyc@gmail.com" method="POST" enctype="text/plain" vid="263">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" vid="264">
                             <div class="space-y-2" vid="265">
                                 <label for="firstName" class="text-sm font-semibold text-brand-dark" vid="266">First Name</label>
-                                <input type="text" id="firstName" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all" placeholder="John" vid="267">
+                                <input type="text" id="firstName" name="First Name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all" placeholder="John" vid="267">
                             </div>
                             <div class="space-y-2" vid="268">
                                 <label for="lastName" class="text-sm font-semibold text-brand-dark" vid="269">Last Name</label>
-                                <input type="text" id="lastName" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all" placeholder="Doe" vid="270">
+                                <input type="text" id="lastName" name="Last Name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all" placeholder="Doe" vid="270">
                             </div>
                         </div>
 
                         <div class="space-y-2" vid="271">
                             <label for="email" class="text-sm font-semibold text-brand-dark" vid="272">Email Address</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all" placeholder="john@company.com" vid="273">
+                            <input type="email" id="email" name="Email" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all" placeholder="john@company.com" vid="273">
                         </div>
 
                         <div class="space-y-2" vid="274">
                             <label for="service" class="text-sm font-semibold text-brand-dark" vid="275">What piece are you missing?</label>
-                            <select id="service" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all appearance-none" vid="276">
+                            <select id="service" name="Service" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all appearance-none" vid="276">
                                 <option value="" disabled="" selected="" vid="277">Select a service area</option>
                                 <option value="web" vid="278">Custom Web Development</option>
                                 <option value="ecommerce" vid="279">E-Commerce Solution</option>
@@ -2373,7 +2412,7 @@ video {
 
                         <div class="space-y-2" vid="282">
                             <label for="message" class="text-sm font-semibold text-brand-dark" vid="283">Project Details</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all resize-none" placeholder="Tell us about your goals..." vid="284"></textarea>
+                            <textarea id="message" name="Message" rows="4" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange outline-none transition-all resize-none" placeholder="Tell us about your goals..." vid="284"></textarea>
                         </div>
 
                         <button type="submit" class="w-full py-4 bg-brand-dark text-white font-bold rounded-xl hover:bg-brand-orange transition-colors duration-300 flex items-center justify-center gap-2 group" vid="285">
@@ -2393,12 +2432,8 @@ video {
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12" vid="289">
                 
                 <div class="col-span-1 md:col-span-2" vid="290">
-                    <a href="#" class="flex items-center gap-2 group mb-6 inline-flex" vid="291">
-                        <div class="relative w-8 h-8 flex items-center justify-center" vid="292">
-                            <div class="absolute w-5 h-5 bg-brand-orange rounded-sm transform transition-transform group-hover:rotate-12" vid="293"></div>
-                            <div class="absolute w-5 h-5 bg-brand-blue rounded-sm translate-x-3 translate-y-3 transform transition-transform group-hover:-rotate-12 mix-blend-screen opacity-90" vid="294"></div>
-                        </div>
-                        <span class="font-bold text-2xl tracking-tight text-white ml-3" vid="295">Problem Solvers</span>
+                    <a href="#" class="flex items-center group mb-6 inline-flex" vid="291">
+                        <img src="Adobe Express - file.png" alt="Problem Solvers Logo" class="h-14 w-auto transition-transform group-hover:scale-105" vid="292">
                     </a>
                     <p class="max-w-sm mb-6" vid="296">Expert web development tailored to solve your unique business challenges. We piece together your digital success.</p>
                     <div class="flex items-center gap-4" vid="297">
@@ -2445,7 +2480,10 @@ video {
     
     <script vid="335">
         document.addEventListener('DOMContentLoaded', () => {
-            
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const body = document.body;
+
+            // Navbar scroll effect
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
@@ -2455,7 +2493,7 @@ video {
                 }
             });
 
-            
+            // Intersection observer for scroll-triggered animations
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -2465,17 +2503,41 @@ video {
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        
                         entry.target.classList.add('animate-in');
-                        
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            const puzzlePieces = document.querySelectorAll('.puzzle-piece');
-            puzzlePieces.forEach(piece => {
-                observer.observe(piece);
+            // Get hero section puzzle pieces (first section after nav)
+            const heroSection = document.querySelector('section');
+            const heroPieces = heroSection ? Array.from(heroSection.querySelectorAll('.puzzle-piece')) : [];
+
+            // Mark hero pieces to exclude from observer
+            heroPieces.forEach(piece => piece.dataset.hero = 'true');
+
+            // Animate hero pieces immediately
+            heroPieces.forEach((piece, index) => {
+                setTimeout(() => {
+                    piece.classList.add('animate-in');
+                }, index * 150);
+            });
+
+            // Calculate total animation time
+            const totalAnimationTime = (heroPieces.length * 150) + 800;
+
+            // Hide loading overlay and enable scrolling after hero animations
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                body.classList.remove('loading');
+            }, totalAnimationTime);
+
+            // Observe non-hero pieces for scroll animations
+            const allPuzzlePieces = document.querySelectorAll('.puzzle-piece');
+            allPuzzlePieces.forEach(piece => {
+                if (!piece.dataset.hero) {
+                    observer.observe(piece);
+                }
             });
         });
     </script>
